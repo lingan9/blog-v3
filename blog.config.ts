@@ -2,7 +2,7 @@ import type { FeedEntry } from './app/types/feed'
 
 const basicConfig = {
 	title: '凌安的小窝',
-	subtitle: '“在隆冬，我终于知道，我身上有一个不可战胜的夏天。” —— 阿尔贝·加缪',
+	subtitle: '慕然回首，那人却在，灯火阑珊处',
 	// 长 description 利好于 SEO
 	description: '凌安的个人博客，目前正在入门ctf-web方向。有无大手子带带我喵',
 	author: {
