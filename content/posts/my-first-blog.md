@@ -9,4 +9,4 @@ category: "技术笔记"
 这里开始写你的正文内容。
 
 如果你在 Typora 里截了图，用 EasyBlogImage 粘贴进来，这里就会自动变成博客园的链接，像下面这样：
-![我的配图](https://img2026.cnblogs.com/xxxx/xxxx.png)
+![4b6afab2e8bd90a052e018088a752c15](https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg)
