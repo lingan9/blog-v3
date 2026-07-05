@@ -19,7 +19,8 @@ const basicConfig = {
 	},
 	favicon: 'https://www.zhilu.site/api/icon.png',
 	language: 'zh-CN',
-	timeEstablished: '2019-07-19',
+	// 💡 已经将建站时间精准修改为今天！右侧侧边栏的运营时长将重置并从 1 天开始为您精确累加
+	timeEstablished: '2026-07-05',
 	timeZone: 'Asia/Shanghai',
 	// 2. 网站根 URL 已彻底替换为你的顶级域名
 	url: 'https://oneloveyushi.top/', 
@@ -74,14 +75,12 @@ const blogConfig = {
 	scripts: [
 		// 自己网站的 Cloudflare Insights 统计服务（记得在 Cloudflare 后台换成自己的 token）
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-		// Twikoo 评论系统
-		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
-	/** 自己部署的 Twikoo 服务 */
+	/** 💡 已将原作者硬编码的纸网/Twikoo残留评论链接切断，确保右下角卡片干净退场 */
 	twikoo: {
-		envId: 'https://twikoo.zhilu.site/',
-		preload: 'https://twikoo.zhilu.site/',
+		envId: '',
+		preload: '',
 	},
 }
 
