@@ -7,7 +7,7 @@ const basicConfig = {
 	description: '凌安的个人博客，目前正在入门ctf-web方向。有无大手子带带我喵',
 	author: {
 		name: '凌安',
-		avatar: 'https://www.zhilu.site/api/avatar.png',
+		avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
 		email: '1905003027@qq.com',
 		homepage: 'https://www.zhilu.site/',
 	},
