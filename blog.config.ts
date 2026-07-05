@@ -100,7 +100,7 @@ export const myFeed: FeedEntry = {
 	avatar: blogConfig.author.avatar,
 	archs: ['Nuxt', 'Vercel'],
 	date: blogConfig.timeEstablished,
-	comment: '这是我自己',
+	comment: '凌安的个人博客，目前正在入门ctf-web方向。',
 }
 
 export default blogConfig
