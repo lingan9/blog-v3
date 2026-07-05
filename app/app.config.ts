@@ -58,8 +58,8 @@ export default defineAppConfig({
 		/** 侧边栏底部图标导航 */
 		iconNav: [
 			{ icon: 'tabler:home', text: '个人主页', url: blogConfig.author.homepage },
-			{ icon: 'ri:qq-line', text: 'QQ：1905003027', url: 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1905003027' },
-			{ icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9' },
+			{ icon: 'ri:qq-line', text: '1905003027', url: 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1905003027' },
+			{ icon: 'tabler:brand-github', text: '', url: 'https://github.com/lingan9' },
 			{ icon: 'tabler:rss', text: 'Atom订阅', url: '/atom.xml' },
 		] satisfies NavItem[],
 		/** 页脚站点地图 */
