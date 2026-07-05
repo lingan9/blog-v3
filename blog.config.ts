@@ -17,7 +17,7 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://www.zhilu.site/api/icon.png',
+	favicon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
 	language: 'zh-CN',
 	// 💡 已经将建站时间精准修改为今天！右侧侧边栏的运营时长将重置并从 1 天开始为您精确累加
 	timeEstablished: '2026-07-05',
