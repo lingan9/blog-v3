@@ -15,6 +15,7 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
+	// 💡 恢复标准路径，确保打包脚本能正确读取本地文件
 	favicon: '/favicon.png',
 	language: 'zh-CN',
 	timeEstablished: '2026-07-05',
@@ -48,23 +49,21 @@ const blogConfig = {
 		robotsNotIndex: ['/preview', '/previews/*'],
 	},
 
-	/** 博客 Atom 订阅源 */
 	feed: {
 		limit: 50,
 		enableStyle: true,
 	},
 
-	/** 向 <head> 中添加脚本 */
 	scripts: [
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+		// 💡 保持原样，千万不能删，删除会导致调用该变量的组件抛出 500 异常
 		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
-	// 🎯 核心魔改：把纸网/Twikoo的数据源直接“李代桃僵”，换成你自己的全新独立域名订阅源！
-	// 这样右下角组件初始化时，强行抓取并渲染出来的，就是你刚刚发布的最新文章标题与更新时间了。
+	// 💡 保持结构完好。将其指向一个永远不会加载成功的 localhost，让挂件静默失效
 	twikoo: {
-		envId: 'https://oneloveyushi.top/atom.xml',
-		preload: 'https://oneloveyushi.top/atom.xml',
+		envId: 'http://127.0.0.1:9999/',
+		preload: 'http://127.0.0.1:9999/',
 	},
 }
 
