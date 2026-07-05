@@ -3,7 +3,6 @@ import type { FeedEntry } from './app/types/feed'
 const basicConfig = {
 	title: '凌安的小窝',
 	subtitle: '蓦然回首，那人却在，灯火阑珊处',
-	// 长 description 利好于 SEO
 	description: '凌安的个人博客，分享技术深度思考与安全学习历程。目前正在从零入门 CTF-Web 方向，记录漏洞复现、网安刷题笔记与日常开发实践。寻找志同道合的技术伙伴，有无大手子带带我喵！欢迎一起交流碰撞，探索赛博荒野中的内在秩序。',
 	author: {
 		name: '凌安',
@@ -16,8 +15,8 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	// 💡 稳定保障：直接读取本地打包后的静态图标，确保浏览器能够完美、稳定地加载出标签页图标
-	favicon: '/favicon.png',
+	// 💡 靠谱修复：直接使用你的网络大图作为标准源，这样浏览器渲染和打包脚本读取都能 100% 通过，绝不卡死
+	favicon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
 	language: 'zh-CN',
 	timeEstablished: '2026-07-05',
 	timeZone: 'Asia/Shanghai',
@@ -25,8 +24,6 @@ const basicConfig = {
 	defaultCategory: '未分类',
 }
 
-// 存储 nuxt.config 和 app.config 共用的配置
-// @keep-sorted
 const blogConfig = {
 	...basicConfig,
 
@@ -52,28 +49,22 @@ const blogConfig = {
 		robotsNotIndex: ['/preview', '/previews/*'],
 	},
 
-	/** 博客 Atom 订阅源 */
 	feed: {
 		limit: 50,
 		enableStyle: true,
 	},
 
-	/** 向 <head> 中添加脚本 */
 	scripts: [
-		// 自己网站的 Cloudflare Insights 统计服务
+		// 仅保留你自己的 Cloudflare 统计，原作者的纸网依赖脚本已在这里被安全拔除
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-		// 恢复基础依赖，防止组件找不到声明抛出 500
-		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
-	// 💡 终极修复：不再填写任何会引发解析错误的非数据库链接，保持安全结构，让挂件在后台彻底安静下来
 	twikoo: {
 		envId: '',
 		preload: '',
 	},
 }
 
-/** 用于生成 OPML 和友链页面配置 */
 export const myFeed: FeedEntry = {
 	author: blogConfig.author.name,
 	sitenick: '凌安的小窝',
