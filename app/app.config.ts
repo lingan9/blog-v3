@@ -16,8 +16,8 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	// 💡 纯代码黑魔法：保持原图地址不变，通过动态过滤镜像完美转换为正圆形（mask=circle）并自动填充纯白背景边框（mbg=ffffff）
-	favicon: 'https://images.weserv.nl/?url=https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg&mask=circle&mbg=ffffff',
+	// 💡 彻底修复 500：直接指向本地 public 文件夹下的标准物理文件，不走任何外部容易爆的第三方 API
+	favicon: '/favicon.png',
 	language: 'zh-CN',
 	timeEstablished: '2026-07-05',
 	timeZone: 'Asia/Shanghai',
@@ -62,7 +62,6 @@ const blogConfig = {
 	scripts: [
 		// 自己网站的 Cloudflare Insights 统计服务
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-		// 💡 已在此处将原作者硬编码硬加载的 Twikoo JS 脚本彻底删除，断开其运行通道
 	],
 
 	twikoo: {
