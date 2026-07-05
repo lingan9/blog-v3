@@ -73,7 +73,7 @@ export default defineAppConfig({
 			{
 				title: '社交',
 				items: [
-					{ icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9' },
+					{ icon: 'tabler:brand-github', text: 'GitHub lingan9', url: 'https://github.com/lingan9' },
 					{ icon: 'ri:qq-line', text: 'QQ：1905003027', url: 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1905003027' },
 					{ icon: 'tabler:mail', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
 				],
