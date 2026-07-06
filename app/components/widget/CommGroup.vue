@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-// 声明响应式变量，默认设为 null，避开编译干扰
+// 声明响应式变量，默认设为 null，避开打包期间的 SSR 静态环境干扰
 const latestArticle = ref<any>(null)
 
 onMounted(async () => {
 	try {
-		// 仅在浏览器挂载完成后静默查询最新文章
+		// 仅在客户端浏览器挂载完成后，再去静默查询最新文章
 		const articles = await queryContent()
 			.where({ _extension: 'md', _partial: false, _draft: false })
 			.sort({ date: -1 })
@@ -21,7 +21,7 @@ onMounted(async () => {
 	}
 })
 
-// 日期格式化
+// 安全的日期格式化函数
 const formatDate = (dateStr: any) => {
 	if (!dateStr) return ''
 	try {
@@ -39,6 +39,7 @@ const formatDate = (dateStr: any) => {
 	dim
 	title="最新动态"
 >
+	<!-- 如果抓取到了最新文章，则渲染出动态标题和时间 -->
 	<NuxtLink v-if="latestArticle" :to="latestArticle._path" class="latest-article-link">
 		<div class="title text-creative">
 			{{ latestArticle.title }}
@@ -50,6 +51,7 @@ const formatDate = (dateStr: any) => {
 		</div>
 	</NuxtLink>
 
+	<!-- 在打包编译阶段和刚打开网页的瞬间，安全地展示兜底状态 -->
 	<div v-else class="tip">
 		<Icon name="tabler:edit" class="mr-1 inline-block align-text-bottom" />
 		<span>暂无动态，正在酝酿新笔记...</span>
