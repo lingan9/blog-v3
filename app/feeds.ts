@@ -13,19 +13,19 @@ export default [
 		entries: [
 			myFeed, // 👈 你的自动化检测天眼会以你（myFeed）为核心起点运行
 			
-			// 💡 下面这里就是你以后自己加新友链的地方！
-			// 当你有了新朋友，直接把下面这段注释解开，把它的信息填进去，自动检测脚本就会开始对它生效：
-			/*
+			// 🎯 完美嵌入、严格契合底层 FeedEntry 类型定义的安全同行友链：
 			{
-				id: 'friend-id',
-				name: '朋友的博客名字',
-				desc: '朋友的网站简介',
-				url: 'https://朋友的域名.com',
-				feed: 'https://朋友的域名.com/atom.xml',
-				avatar: 'https://朋友的头像.png',
-				date: '2026-07-05',
+				author: 'ss0t_HACKED',
+				sitenick: 'ss0t_HACKED',
+				title: 'ss0t_HACKED',
+				desc: '一个刚刚入门的pwner，大手子ddw',
+				link: 'https://blog.ss0t-hacked.top',
+				feed: 'https://blog.ss0t-hacked.top/atom.xml',
+				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
+				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
+				date: '2026-07-06',
+				comment: '安全同行，Pwn 方向大佬',
 			},
-			*/
 		],
 	},
 	// #endregion
