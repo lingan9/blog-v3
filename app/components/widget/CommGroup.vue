@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-// 💡 声明响应式变量，默认设为 null，完美避开 SSR 服务端编译死锁
+// 声明响应式变量，默认设为 null，避开编译干扰
 const latestArticle = ref<any>(null)
 
 onMounted(async () => {
 	try {
-		// 🎯 仅在客户端浏览器挂载完成后，再去静默查询最新文章，绝对不卡死 nuxt build
+		// 仅在浏览器挂载完成后静默查询最新文章
 		const articles = await queryContent()
 			.where({ _extension: 'md', _partial: false, _draft: false })
 			.sort({ date: -1 })
@@ -21,7 +21,7 @@ onMounted(async () => {
 	}
 })
 
-// 安全的日期格式化函数
+// 日期格式化
 const formatDate = (dateStr: any) => {
 	if (!dateStr) return ''
 	try {
