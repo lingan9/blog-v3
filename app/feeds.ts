@@ -11,14 +11,14 @@ export default [
 		desc: '使用 Clarity 博客主题构建的网站。',
 		// @keep-sorted { "keys": ["date"] }
 		entries: [
-			myFeed, // 👈 你的自动化检测天眼会以你（myFeed）为核心起点运行
+			myFeed, // 👈 你的个人博客配置起点
 			
-			// 🎯 完美嵌入、严格契合底层 FeedEntry 类型定义的安全同行友链：
+			// 🎯 严格契合底层 FeedEntry 类型定义的安全同行友链
 			{
 				author: 'ss0t_HACKED',
 				sitenick: 'ss0t_HACKED',
 				title: 'ss0t_HACKED',
-				desc: '一个刚刚入门的pwner，大手子ddw',
+				desc: '一个超级厉害的pwn大手子',
 				link: 'https://blog.ss0t-hacked.top',
 				feed: 'https://blog.ss0t-hacked.top/atom.xml',
 				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
