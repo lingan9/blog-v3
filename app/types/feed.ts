@@ -1,32 +1,35 @@
-import type { FeedGroup } from '../app/types/feed'
-// 友链检测 CLI 需要使用显式导入和相对路径
-import { myFeed } from '../blog.config'
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
+export interface FeedEntry {
+	/** 博客作者 */
+	author: string
+	/** 网站趣称 */
+	sitenick?: string
+	/** 博客网站标题，允许长标题，用于订阅源，为空则使用网站趣称或作者名 */
+	title?: string
+	/** 个人简介/博客描述 */
+	desc?: string
+	/** 博客地址 */
+	link: string
+	/** 订阅源 */
+	feed?: string
+	/** 站点小图标 */
+	icon: string
+	/** 个人头像 */
+	avatar: string
+	/** 博客技术架构 */
+	archs?: any[]
+	/** 订阅日期 */
+	date: string
+	/** 博主备注 */
+	comment?: string
+	/** 错误信息 */
+	error?: string
+}
 
-export default [
-	// #region Clarity
-	{
-		name: '清晰体验',
-		desc: '使用 Clarity 博客主题构建的网站。',
-		// @keep-sorted { "keys": ["date"] }
-		entries: [
-			myFeed, // 👈 你的个人博客配置起点
-			
-			// 🎯 严格契合底层 FeedEntry 类型定义的安全同行友链
-			{
-				author: 'ss0t_HACKED',
-				sitenick: 'ss0t_HACKED',
-				title: 'ss0t_HACKED',
-				desc: '一个刚刚入门的pwner，大手子ddw',
-				link: 'https://blog.ss0t-hacked.top',
-				feed: 'https://blog.ss0t-hacked.top/atom.xml',
-				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
-				date: '2026-07-06',
-				comment: '安全同行，Pwn 方向大佬',
-			},
-		],
-	},
-	// #endregion
-] satisfies FeedGroup[]
+export interface FeedGroup {
+	/** 分组名 */
+	name: string
+	/** 描述 */
+	desc?: string
+	/** 友链列表 */
+	entries: FeedEntry[]
+}
