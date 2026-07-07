@@ -1,139 +1,54 @@
-import type { Nav, NavItem } from '~/types/nav'
-import { pascalCase } from 'es-toolkit/string'
-import { Temporal } from 'temporal-polyfill'
-import blogConfig from '~~/blog.config'
-import { name, version } from '~~/package.json'
+import type { FeedGroup } from '../app/types/feed'
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
 
-// @keep-sorted
-export default defineAppConfig({
-	// 将 blog.config 中的配置项复制 to appConfig，方便调用
-	...blogConfig,
-
-	component: {
-		alert: {
-			/** 默认使用卡片风格还是扁平风格 */
-			defaultStyle: 'card' as 'card' | 'flat',
-		},
-
-		codeblock: {
-			/** 代码块触发折叠的行数 */
-			triggerRows: 32,
-			/** 代码块折叠后的行数 */
-			collapsedRows: 16,
-			/** 启用代码块缩进导航会关闭空格渲染 */
-			enableIndentGuide: true,
-			/** 代码块缩进导航(Indent Guige)竖线匹配空格数 */
-			indent: 4,
-			/** tab渲染宽度 */
-			tabSize: 3,
-		},
-
-		/** 文章开头摘要 */
-		excerpt: {
-			animation: true,
-			caret: '_',
-		},
-
-		/** 精选文章 Slide */
-		slide: {
-			/** 适合封面图无字时启用 */
-			showTitle: true,
-		},
-
-		stats: {
-			/** 归档页面每年标题对应的年龄 */
-			birthYear: 2026,
-			/** blog-stats widget 的预置文本 */
-			wordCount: '约1千',
-		},
-	},
-
-	// @keep-sorted
-	footer: {
-		/** 页脚版权信息，支持 <br> 换行等 HTML 标签 */
-		copyright: `© ${Temporal.Now.plainDateISO().year.toString()} ${blogConfig.author.name}`,
-		/** 侧边栏底部图标导航 */
-		iconNav: [
-			{ icon: 'tabler:home', text: '个人主页', url: blogConfig.author.homepage },
-			{ icon: 'ri:qq-line', text: 'QQ：1905003027', url: 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1905003027' },
-			{ icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9' },
-			{ icon: 'tabler:rss', text: 'Atom订阅', url: '/atom.xml' },
-		] satisfies NavItem[],
-		/** 页脚站点地图 */
-		nav: [
+export default [
+	// 🏠 本尊专区：你的个人博客展示
+	{
+		name: '我的博客',
+		desc: '欢迎来到凌安的小窝~',
+		entries: [
 			{
-				title: '探索',
-				items: [
-					{ icon: 'tabler:rss', text: 'Atom订阅', url: '/atom.xml' },
-				],
+				author: '凌安',
+				sitenick: '凌安的小窝',
+				title: '凌安的小窝',
+				desc: '正在入门ctf-web 大手子ddw',
+				link: 'https://oneloveyushi.top/',
+				feed: 'https://oneloveyushi.top/atom.xml',
+				icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',   // 还原旧图标    
+				avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', // 还原旧头像    
+				date: '2026-07-05',
+				comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
 			},
+		],
+	},
+
+	// 🏆 第一组：专门给安全圈/CTF圈的大佬们准备的跪拜席
+	{
+		name: 'CTFer',
+		desc: '每日跪拜名单...',
+		entries: [
 			{
-				title: '社交',
-				items: [
-					{ icon: 'tabler:brand-github', text: 'GitHub lingan9', url: 'https://github.com/lingan9' },
-					{ icon: 'ri:qq-line', text: 'QQ：1905003027', url: 'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1905003027' },
-					{ icon: 'tabler:mail', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
-				],
+				author: 'ss0t_HACKED',
+				sitenick: 'ss0t_HACKED',
+				title: 'ss0t_HACKED',
+				desc: '一个超级厉害的pwn大手子',
+				link: 'https://blog.ss0t-hacked.top',
+				feed: 'https://blog.ss0t-hacked.top/atom.xml',
+				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
+				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
+				date: '2026-07-06',
+				comment: 'Pwn 方向大佬',
 			},
-			{
-				title: '信息',
-				items: [
-					{ icon: 'simple-icons:nuxt', text: `主题: ${pascalCase(name)} ${version}`, url: 'https://github.com/lingan9/blog-v3' },
-					{ icon: 'tabler:color-swatch', text: '主题和组件文档', url: '/theme' },
-				],
-			},
-		] satisfies Nav,
+		],
 	},
 
-	/** 左侧栏顶部 Logo 图标 */
-	header: {
-		logo: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
-		/** 展示标题文本，否则展示纯 Logo */
-		showTitle: true,
-		subtitle: blogConfig.subtitle,
-		emojiTail: ['📄', '📈', '⚡', '🧠', '🏖️'], 
+	// 🌐 第二组：留给日常技术、生活以及其他类型的常规博客好友
+	{
+		name: '好友博客',
+		desc: '凌安的好友们',
+		entries: [
+			/* 🌟 以后有了新朋友，直接模仿上面的格式把大括号 {...} 复制到这里来就行啦 */
+		],
 	},
-
-	/** 友链页面 */
-	link: {
-		/** 无订阅源展示静音图标 */
-		remindNoFeed: true,
-		/** 友链分组内随机排序 */
-		randomInGroup: true,
-	},
-
-	/** 左侧栏导航 */
-	nav: [
-		{
-			title: '',
-			items: [
-				{ icon: 'tabler:files', text: '文章', url: '/' },
-				{ icon: 'tabler:link', text: '友链', url: '/link' },
-				{ icon: 'tabler:archive', text: '归档', url: '/archive' },
-			],
-		},
-	] satisfies Nav,
-
-	pagination: {
-		perPage: 10,
-		/** 默认排序方式，需要是 this.article.order 中的键名 */
-		sortOrder: 'date' as keyof typeof blogConfig.article.order,
-		/** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
-		allowAscending: false,
-	},
-
-	themes: {
-		light: {
-			icon: 'tabler:sun',
-			tip: '浅色模式',
-		},
-		system: {
-			icon: 'tabler:device-desktop',
-			tip: '跟随系统',
-		},
-		dark: {
-			icon: 'tabler:moon',
-			tip: '深色模式',
-		},
-	},
-})
+] satisfies FeedGroup[]
