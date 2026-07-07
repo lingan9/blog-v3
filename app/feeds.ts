@@ -3,6 +3,26 @@ import type { FeedGroup } from '../app/types/feed'
 import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
 
 export default [
+	// 🏠 本尊专区：你的个人博客展示
+	{
+		name: '我的博客',
+		desc: '欢迎来到凌安的小窝~',
+		entries: [
+			{
+				author: '凌安',
+				sitenick: '凌安的小窝',
+				title: '凌安的小窝',
+				desc: '蓦然回首，那人却在，灯火阑珊处',
+				link: 'https://oneloveyushi.top/',
+				feed: 'https://oneloveyushi.top/atom.xml',
+				icon: '/avatar.png',       // 💡 联动你刚刚配置好的新圆形头像
+				avatar: '/avatar.png',     // 💡 静态资源路径，确保全站风格统一
+				date: '2026-07-05',
+				comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
+			},
+		],
+	},
+
 	// 🏆 第一组：专门给安全圈/CTF圈的大佬们准备的跪拜席
 	{
 		name: 'CTFer',
