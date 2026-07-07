@@ -6,7 +6,7 @@ const basicConfig = {
 	description: '凌安的个人博客，分享技术深度思考与安全学习历程。目前正在从零入门 CTF-Web 方向，记录漏洞复现、网安刷题笔记与日常开发实践。寻找志同道合的技术伙伴，有无大手子带带我喵！欢迎一起交流碰撞，探索赛博荒野中的内在秩序。',
 	author: {
 		name: '凌安',
-		avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
+		avatar: '/avatar.png', // 💡 已修改：指向本地 public 目录下的新圆形头像
 		email: '1905003027@qq.com',
 		homepage: 'https://oneloveyushi.top/', 
 	},
@@ -15,8 +15,8 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	// 💡 靠谱修复：直接使用你的网络大图作为标准源，这样浏览器渲染和打包脚本读取都能 100% 通过，绝不卡死
-	favicon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
+	// 💡 已修改：浏览器标签页小图标同步更新为新的圆形头像
+	favicon: '/avatar.png',
 	language: 'zh-CN',
 	timeEstablished: '2026-07-05',
 	timeZone: 'Asia/Shanghai',
