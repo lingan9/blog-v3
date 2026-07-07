@@ -1,55 +1,80 @@
-import type { FeedGroup } from '../app/types/feed'
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
+import type { FeedEntry } from './app/types/feed'
 
-export default [
-	// 🏠 本尊专区：你的个人博客展示
-	{
-		name: '我的博客',
-		desc: '欢迎来到凌安的小窝~',
-		entries: [
-			{
-				author: '凌安',
-				sitenick: '凌安的小窝',
-				title: '凌安的小窝',
-				desc: '蓦然回首，那人却在，灯火阑珊处',
-				link: 'https://oneloveyushi.top/',
-				feed: 'https://oneloveyushi.top/atom.xml',
-				icon: '/avatar.png',       // 💡 联动你刚刚配置好的新圆形头像
-				avatar: '/avatar.png',     // 💡 静态资源路径，确保全站风格统一
-				date: '2026-07-05',
-				comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
-			},
-		],
+const basicConfig = {
+	title: '凌安的小窝',
+	subtitle: '何处不逢春',
+	description: '凌安的个人博客，分享技术深度思考与安全学习历程。目前正在从零入门 CTF-Web 方向，记录漏洞复现、网安刷题笔记与日常开发实践。寻找志同道合的技术伙伴，有无大手子带带我喵！欢迎一起交流碰撞，探索赛博荒野中的内在秩序。',
+	author: {
+		name: '凌安',
+		avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', // 还原旧头像
+		email: '1905003027@qq.com',
+		homepage: 'https://oneloveyushi.top/', 
+	},
+	copyright: {
+		abbr: 'CC BY-NC-SA 4.0',
+		name: '署名-非商业性使用-相同方式共享 4.0 国际',
+		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
+	},
+	favicon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', // 还原旧小图标
+	language: 'zh-CN',
+	timeEstablished: '2026-07-05',
+	timeZone: 'Asia/Shanghai',
+	url: 'https://oneloveyushi.top/', 
+	defaultCategory: '未分类',
+}
+
+const blogConfig = {
+	...basicConfig,
+
+	article: {
+		categories: {
+			[basicConfig.defaultCategory]: { icon: 'tabler:circle-dashed' },
+			技术: { icon: 'tabler:mouse', color: '#33aaff' },
+			开发: { icon: 'tabler:code', color: '#7777ff' },
+			安全: { icon: 'tabler:bug', color: '#ff7733' },
+			杂谈: { icon: 'tabler:message', color: '#33bbaa' },
+			生活: { icon: 'tabler:leaf', color: '#ff7777' },
+		},
+		types: {
+			tech: {},
+			story: {},
+		},
+		order: {
+			date: '创建日期',
+			updated: '更新日期',
+		},
+		useRandomPremalink: false,
+		hidePostPrefix: true,
+		robotsNotIndex: ['/preview', '/previews/*'],
 	},
 
-	// 🏆 第一组：专门给安全圈/CTF圈的大佬们准备的跪拜席
-	{
-		name: 'CTFer',
-		desc: '每日跪拜名单...',
-		entries: [
-			// 🎯 你的安全同行兼 Pwn 大佬完美归位到这里
-			{
-				author: 'ss0t_HACKED',
-				sitenick: 'ss0t_HACKED',
-				title: 'ss0t_HACKED',
-				desc: '一个超级厉害的pwn大手子',
-				link: 'https://blog.ss0t-hacked.top',
-				feed: 'https://blog.ss0t-hacked.top/atom.xml',
-				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
-				date: '2026-07-06',
-				comment: 'Pwn 方向大佬',
-			},
-		],
+	feed: {
+		limit: 50,
+		enableStyle: true,
 	},
 
-	// 🌐 第二组：留给日常技术、生活以及其他类型的常规博客好友
-	{
-		name: '好友博客',
-		desc: '凌安的好友们',
-		entries: [
-			/* 🌟 以后有了新朋友，直接模仿上面的格式把大括号 {...} 复制到这里来就行啦 */
-		],
+	scripts: [
+		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+	],
+
+	twikoo: {
+		envId: '',
+		preload: '',
 	},
-] satisfies FeedGroup[]
+}
+
+export const myFeed: FeedEntry = {
+	author: blogConfig.author.name,
+	sitenick: '凌安的小窝',
+	title: blogConfig.title,
+	desc: blogConfig.subtitle || blogConfig.description,
+	link: blogConfig.url, 
+	feed: new URL('/atom.xml', blogConfig.url).toString(), 
+	icon: blogConfig.favicon,
+	avatar: blogConfig.author.avatar,
+	archs: ['Nuxt', 'Vercel'],
+	date: blogConfig.timeEstablished,
+	comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
+}
+
+export default blogConfig
