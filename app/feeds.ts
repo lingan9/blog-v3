@@ -16,7 +16,7 @@ export default [
 				desc: '一个超级厉害的pwn大手子',
 				link: 'https://blog.ss0t-hacked.top',
 				feed: 'https://blog.ss0t-hacked.top/atom.xml',
-				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
+				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
 				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
 				date: '2026-07-06',
 				comment: 'Pwn 方向大佬',
