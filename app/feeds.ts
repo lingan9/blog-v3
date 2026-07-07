@@ -1,24 +1,19 @@
 import type { FeedGroup } from '../app/types/feed'
-// 友链检测 CLI 需要使用显式导入和相对路径
-import { myFeed } from '../blog.config'
 // eslint-disable-next-line unused-imports/no-unused-imports
 import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
 
 export default [
-	// #region Clarity
+	// 🏆 第一组：专门给安全圈/CTF圈的大佬们准备的跪拜席
 	{
-		name: '清晰体验',
-		desc: '使用 Clarity 博客主题构建的网站。',
-		// @keep-sorted { "keys": ["date"] }
+		name: 'CTFer',
+		desc: '每日跪拜名单...',
 		entries: [
-			myFeed, // 👈 你的个人博客配置起点
-			
-			// 🎯 严格契合底层 FeedEntry 类型定义的安全同行友链
+			// 🎯 你的安全同行兼 Pwn 大佬完美归位到这里
 			{
 				author: 'ss0t_HACKED',
 				sitenick: 'ss0t_HACKED',
 				title: 'ss0t_HACKED',
-				desc: '一个超级厉害的pwn大手子',
+				desc: '一个刚刚入门的pwner，大手子ddw',
 				link: 'https://blog.ss0t-hacked.top',
 				feed: 'https://blog.ss0t-hacked.top/atom.xml',
 				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154497&s=640',
@@ -28,5 +23,13 @@ export default [
 			},
 		],
 	},
-	// #endregion
+
+	// 🌐 第二组：留给日常技术、生活以及其他类型的常规博客好友
+	{
+		name: '好友博客',
+		desc: '凌安的好友们',
+		entries: [
+			/* 🌟 以后有了新朋友，直接模仿上面的格式把大括号 {...} 复制到这里来就行啦 */
+		],
+	},
 ] satisfies FeedGroup[]
