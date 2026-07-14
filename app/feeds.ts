@@ -26,6 +26,19 @@ const basicConfig = {
 const blogConfig = {
 	...basicConfig,
 
+	// 👇 补丁 1：增加 header 配置，防止 BlogHeader 等组件读取 undefined 导致页面彻底崩溃
+	header: {
+		logo: basicConfig.favicon,
+		showTitle: true,
+		subtitle: basicConfig.subtitle,
+		iconNav: [], // 核心修复点：给它一个空数组，即使找不到图标也不会报错退出
+	},
+
+	// 👇 补丁 2：部分主题会从 nav 里读取 iconNav，双重保险
+	nav: {
+		iconNav: [], 
+	},
+
 	article: {
 		categories: {
 			[basicConfig.defaultCategory]: { icon: 'tabler:circle-dashed' },
