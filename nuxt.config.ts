@@ -81,6 +81,8 @@ export default defineNuxtConfig({
 			// 修复部分平台会在文章路径后添加 `/`，导致闪现 404 错误
 			// https://github.com/nuxt/content/issues/2378
 			autoSubfolderIndex: CLOUDFLARE_PAGES || GITHUB_ACTIONS || NETLIFY ? false : undefined,
+			// 👇 补丁核心：全局忽略预渲染错误（例如因页面未上线导致的 feed 请求失败），确保打包不中断
+			failOnError: false,
 		},
 	},
 
