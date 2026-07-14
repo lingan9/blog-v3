@@ -14,9 +14,11 @@ export default [
 				title: '凌安的小窝',
 				desc: '正在入门ctf-web 大手子ddw',
 				link: 'https://oneloveyushi.top/',
-				feed: 'https://oneloveyushi.top/atom.xml',
-				icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',   // 还原旧图标    
-				avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', // 还原旧头像    
+				// ⚠️ 临时注释掉 feed！因为你的网站还没上线，打包工具请求不到这个 xml 就会报错中断。
+				// 等这次部署成功，网站活过来了，下次再把这行取消注释！
+				// feed: 'https://oneloveyushi.top/atom.xml',
+				icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', 
+				avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
 				date: '2026-07-05',
 				comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
 			},
