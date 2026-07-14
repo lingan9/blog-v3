@@ -1,56 +1,118 @@
-import type { FeedGroup } from '../app/types/feed'
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
+import blogConfig from '~~/blog.config'
 
-export default [
-	// 🏠 本尊专区：你的个人博客展示
-	{
-		name: '我的博客',
-		desc: '欢迎来到凌安的小窝~',
-		entries: [
-			{
-				author: '凌安',
-				sitenick: '凌安的小窝',
-				title: '凌安的小窝',
-				desc: '正在入门ctf-web 大手子ddw',
-				link: 'https://oneloveyushi.top/',
-				// ⚠️ 临时注释掉 feed！因为你的网站还没上线，打包工具请求不到这个 xml 就会报错中断。
-				// 等这次部署成功，网站活过来了，下次再把这行取消注释！
-				// feed: 'https://oneloveyushi.top/atom.xml',
-				icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg', 
-				avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
-				date: '2026-07-05',
-				comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
-			},
-		],
-	},
+export default defineAppConfig({
+  // ========== 基础信息 ==========
+  title: blogConfig.title,
+  description: blogConfig.description,
+  url: blogConfig.url,
+  language: blogConfig.language,
+  timeEstablished: blogConfig.timeEstablished,
 
-	// 🏆 第一组：专门给安全圈/CTF圈的大佬们准备的跪拜席
-	{
-		name: 'CTFer',
-		desc: '每日跪拜名单...',
-		entries: [
-			{
-				author: 'ss0t_HACKED',
-				sitenick: 'ss0t_HACKED',
-				title: 'ss0t_HACKED',
-				desc: '一个超级厉害的pwn大手子',
-				link: 'https://blog.ss0t-hacked.top',
-				feed: 'https://blog.ss0t-hacked.top/atom.xml',
-				icon: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3255154997&s=640',
-				date: '2026-07-06',
-				comment: 'Pwn 方向大佬',
-			},
-		],
-	},
+  author: {
+    name: blogConfig.author.name,
+    avatar: blogConfig.author.avatar,
+    email: blogConfig.author.email,
+    homepage: blogConfig.author.homepage,
+  },
 
-	// 🌐 第二组：留给日常技术、生活以及其他类型的常规博客好友
-	{
-		name: '好友博客',
-		desc: '凌安的好友们',
-		entries: [
-			/* 🌟 以后有了新朋友，直接模仿上面的格式把大括号 {...} 复制到这里来就行啦 */
-		],
-	},
-] satisfies FeedGroup[]
+  copyright: {
+    abbr: blogConfig.copyright.abbr,
+    name: blogConfig.copyright.name,
+    url: blogConfig.copyright.url,
+  },
+
+  // ========== 头部配置 ==========
+  header: {
+    logo: blogConfig.author.avatar,
+    showTitle: true,
+    subtitle: blogConfig.subtitle || blogConfig.description,
+    emojiTail: [] as string[],
+  },
+
+  // ========== 侧边栏导航 ==========
+  nav: [
+    {
+      title: '',
+      items: [
+        { icon: 'tabler:home', text: '首页', url: '/' },
+        { icon: 'tabler:archive', text: '归档', url: '/archive' },
+        { icon: 'tabler:link', text: '友链', url: '/link' },
+        { icon: 'tabler:palette', text: '主题', url: '/theme' },
+      ],
+    },
+  ],
+
+  // ========== 页脚配置 ==========
+  footer: {
+    nav: [
+      {
+        title: '导航',
+        items: [
+          { icon: 'tabler:home', text: '首页', url: '/' },
+          { icon: 'tabler:archive', text: '归档', url: '/archive' },
+          { icon: 'tabler:link', text: '友链', url: '/link' },
+          { icon: 'tabler:palette', text: '主题', url: '/theme' },
+        ],
+      },
+      {
+        title: '更多',
+        items: [
+          { icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9/blog-v3', external: true },
+          { icon: 'tabler:rss', text: 'Atom 订阅', url: '/atom.xml', external: true },
+        ],
+      },
+    ],
+    iconNav: [] as { icon: string, text: string, url: string }[],
+    copyright: `&copy; ${new Date().getFullYear()} ${blogConfig.author.name} | Powered by <a href="https://github.com/lingan9/blog-v3" target="_blank">Clarity</a>`,
+  },
+
+  // ========== 文章配置 ==========
+  article: {
+    categories: blogConfig.article.categories,
+    order: blogConfig.article.order,
+  },
+
+  // ========== 分页配置 ==========
+  pagination: {
+    perPage: 10,
+    sortOrder: 'date' as string,
+    allowAscending: true,
+  },
+
+  // ========== 组件配置 ==========
+  component: {
+    stats: {
+      birthYear: new Date(blogConfig.timeEstablished).getFullYear(),
+    },
+    alert: {
+      defaultStyle: 'flat' as string,
+    },
+    excerpt: {
+      animation: true,
+      caret: '_',
+    },
+    codeblock: {
+      triggerRows: 20,
+      collapsedRows: 10,
+    },
+    slide: {} as Record<string, any>,
+  },
+
+  // ========== 主题配置 ==========
+  themes: {
+    system: { icon: 'tabler:device-desktop', tip: '跟随系统' },
+    light: { icon: 'tabler:sun', tip: '浅色模式' },
+    dark: { icon: 'tabler:moon', tip: '深色模式' },
+  } as Record<string, { icon: string, tip: string }>,
+
+  // ========== 友链配置 ==========
+  link: {
+    randomInGroup: false,
+    remindNoFeed: true,
+  },
+
+  // ========== 评论配置 ==========
+  twikoo: {
+    envId: blogConfig.twikoo?.envId || '',
+  },
+})

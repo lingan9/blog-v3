@@ -10,9 +10,9 @@ aside: [toc, meta-aside-github]
 ::meta-aside-github{title="项目仓库"}
 :::link-card
 ---
-title: L33Z22L11/blog-v3
-description: My blog, powered by Nuxt 4 & Nuxt Content v3. 纸鹿摸鱼处，分享技术与生活。
-link: https://github.com/L33Z22L11/blog-v3
+title: lingan9/blog-v3
+description: My blog, powered by Nuxt 4 & Nuxt Content v3. 凌安的小窝，分享技术与生活。
+link: https://github.com/lingan9/blog-v3
 ---
 :::
 ::
@@ -70,17 +70,16 @@ class: gradient-card active
 
 ::link-banner
 ---
-banner: https://assets.zhilu.cyou/cover3/blog-using-nuxt.jpg
-title: 博客进化：从 Hexo 到 Nuxt Content
-link: /2024/blog-using-nuxt
+title: 博客之旅：基于 Nuxt Content 的个人博客
+link: /
 ---
 ::
 
 ## 开源与衍生
 
-- 灵感源自 [xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
+- [我的个人博客](https://oneloveyushi.top/)
 - 借鉴了众多优秀设计，自己的一些设计也为 :tip[许多朋友的博客项目]{tip="真的有不少！"} 提供了灵感。
-- 项目被多人用作个人博客，详见 [`README.md`](https://github.com/L33Z22L11/blog-v3)。
+- 项目基于 Clarity 主题构建，详见 [`README.md`](https://github.com/lingan9/blog-v3)。
 
 ### 技术架构
 
@@ -112,4 +111,4 @@ link: /2024/blog-using-nuxt
   - **代码压缩**：Oxc Minify
 ::
 
-- 更多技术依赖可参考 [`pnpm-workspace.yaml`](https://github.com/L33Z22L11/blog-v3/blob/main/pnpm-workspace.yaml)。
+- 更多技术依赖可参考 [`pnpm-workspace.yaml`](https://github.com/lingan9/blog-v3/blob/main/pnpm-workspace.yaml)。

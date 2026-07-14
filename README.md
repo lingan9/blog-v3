@@ -1,13 +1,11 @@
-# 纸鹿摸鱼处
+# 凌安的小窝
 
 [![框架](https://img.shields.io/badge/框架-Nuxt-00DC82?logo=Nuxt.js)](https://nuxt.com/)
 [![CMS](https://img.shields.io/badge/CMS-Nuxt%20Content-00DC82?logo=Nuxt.js)](https://content.nuxt.com/)
-[![部署平台](https://img.shields.io/badge/部署平台-Vercel-000000?logo=Vercel)](https://vercel.com/)
-[![访问统计](https://img.shields.io/badge/访问统计-Umami-000000?logo=Umami)](https://github.com/umami-software/umami)
 [![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
 [![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
-我的第三代个人博客，于 2024 年 8 月 11 日上线。
+凌安的个人博客，基于 Clarity 主题构建，于 2026 年 7 月上线。
 
 ## 耻辱柱 / Hall of Shame
 
@@ -33,7 +31,7 @@
 
 | 博客名称                                     | 作者          | 对应上游版本号 | 下游特色功能                                 |
 | -------------------------------------------- | ------------- | -------------- | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.0         | (我是上游)                                   |
+| **[凌安的小窝](https://oneloveyushi.top/)**   | **lingan9** | v3.7.0         | (上游: L33Z22L11/blog-v3)                  |
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8         | 最新评论                                     |
 | [月空人](https://www.weilog.me/)             | Whbbit1999    | v3.7.0-alpha.4 | 项目/博客/Snippets页                         |
 | [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.7.0-rc.0    | 设计风格统一                                 |
@@ -63,7 +61,7 @@
 
 ## 特性
 
-[主题特性](https://blog.zhilu.site/theme) · [组件示例](https://blog.zhilu.site/previews/example)
+[主题特性](https://oneloveyushi.top/theme) · [组件示例](https://oneloveyushi.top/previews/example)
 
 ## 目录结构
 
