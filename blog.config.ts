@@ -55,8 +55,9 @@ const blogConfig = {
 	},
 
 	scripts: [
-		// 仅保留你自己的 Cloudflare 统计，原作者的纸网依赖脚本已在这里被安全拔除
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+		// Twikoo 评论系统
+		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
 	twikoo: {
