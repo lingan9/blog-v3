@@ -72,8 +72,23 @@ const { copy, copied } = useCopy(shareText)
 	gap: 1rem;
 	margin: 0.5rem;
 	border-radius: 1rem;
-	background-color: var(--c-bg-2);
+	border: 1px solid var(--c-border);
+	background: linear-gradient(135deg, var(--c-bg-2), var(--c-bg-3));
 	color: var(--c-text);
+	position: relative;
+	overflow: hidden;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 50%;
+		height: 100%;
+		background: radial-gradient(ellipse at top right, var(--c-primary-soft), transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
 
 	@media (max-width: $breakpoint-mobile) {
 		margin: 0;
@@ -96,7 +111,7 @@ const { copy, copied } = useCopy(shareText)
 		}
 
 		.post-title {
-			background-image: linear-gradient(transparent, #0003, #0005);
+			background-image: linear-gradient(transparent, #0003, #0006);
 			text-shadow: var(--text-shadow-black);
 
 			&.text-story {
@@ -136,6 +151,7 @@ const { copy, copied } = useCopy(shareText)
 .post-nav {
 	padding: 0.8em 1rem;
 	font-size: 0.8em;
+	z-index: 1;
 
 	.post-info {
 		display: flex;

@@ -10,7 +10,8 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">
-			{{ title }}
+			<span class="title-text">{{ title }}</span>
+			<span class="title-line" />
 		</h2>
 
 		<p v-if="description" class="article-description">
@@ -31,7 +32,7 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 				icon="tabler:clock-edit"
 			/>
 
-			<span v-if="categories" :style="{ color: getCategoryColor(categories[0]) }">
+			<span v-if="categories" class="article-category" :style="{ color: getCategoryColor(categories[0]) }">
 				<Icon :name="getCategoryIcon(categories[0])" />
 				{{ categories[0] }}
 			</span>
@@ -51,13 +52,35 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	position: relative;
 	margin: 1em 0;
 	border-radius: 0.8em;
+	border: 1px solid var(--c-border);
 	color: var(--c-text);
-	animation: float-in 0.2s var(--delay) backwards;
+	animation: float-in 0.3s var(--delay) backwards;
+	overflow: hidden;
+
+	/* 左侧装饰条 */
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 10%;
+		height: 80%;
+		width: 3px;
+		background: linear-gradient(180deg, var(--c-primary), var(--c-accent), var(--c-accent-2));
+		border-radius: 0 2px 2px 0;
+		opacity: 0;
+		transform: scaleY(0);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	&:hover::before {
+		opacity: 1;
+		transform: scaleY(1);
+	}
 
 	> article {
 		display: grid;
 		gap: 0.5em;
-		padding: 1em;
+		padding: 1.2em;
 	}
 }
 
@@ -77,30 +100,53 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	}
 }
 
+.article-category {
+	font-weight: 600;
+}
+
 .article-title {
 	font-size: 1.2em;
 	color: var(--c-text);
+	display: flex;
+	flex-direction: column;
+	gap: 0.3em;
+
+	.title-line {
+		display: block;
+		width: 0;
+		height: 2px;
+		background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+		border-radius: 1px;
+		transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.article-card:hover & .title-line {
+		width: 3em;
+	}
 }
 
 .article-description {
 	font-size: 0.9em;
 	color: var(--c-text-2);
+	line-height: 1.6;
 }
 
 .article-cover {
 	position: absolute;
-	opacity: 0.8;
+	opacity: 0.5;
 	inset-inline-end: 0;
 	top: 0;
 	width: calc(40% + 2em);
 	height: 100%;
 	margin: 0;
 	mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
-	transition: opacity 0.2s;
+	transition: opacity 0.3s;
 	object-fit: cover;
+	filter: brightness(0.9);
 
 	:hover > & {
-		opacity: 1;
+		opacity: 0.8;
+		filter: brightness(1);
 	}
 
 	& + article {

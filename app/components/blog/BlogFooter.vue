@@ -26,6 +26,20 @@ const appConfig = useAppConfig()
 	margin: 3rem 1rem;
 	font-size: 0.9em;
 	color: var(--c-text-2);
+	border-top: 2px solid var(--c-border);
+	padding-top: 2rem;
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: -2px;
+		left: 0;
+		width: 30%;
+		height: 2px;
+		background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+		border-radius: 1px;
+	}
 
 	.footer-nav {
 		display: flex;
@@ -35,6 +49,7 @@ const appConfig = useAppConfig()
 
 		hgroup {
 			margin: 0.5em;
+			color: var(--c-text);
 		}
 
 		a {
@@ -49,13 +64,14 @@ const appConfig = useAppConfig()
 
 			&:hover {
 				background-color: var(--c-bg-soft);
-				color: var(--c-text);
+				color: var(--c-primary);
 			}
 		}
 	}
 
 	p {
 		margin: 0.5em;
+		opacity: 0.6;
 	}
 }
 </style>

@@ -19,12 +19,15 @@ const appConfig = useAppConfig()
 		/>
 	</div>
 
-	<NuxtImg
-		:src="appConfig.header.logo"
-		class="blog-logo round-cobblestone"
-		:class="{ circle: appConfig.header.showTitle }"
-		:alt="appConfig.title"
-	/>
+	<div class="avatar-wrapper">
+		<NuxtImg
+			:src="appConfig.header.logo"
+			class="blog-logo round-cobblestone"
+			:class="{ circle: appConfig.header.showTitle }"
+			:alt="appConfig.title"
+		/>
+		<div class="avatar-glow" />
+	</div>
 
 	<div v-if="appConfig.header.showTitle" class="blog-text">
 		<component :is="tag" class="header-title">
@@ -38,7 +41,7 @@ const appConfig = useAppConfig()
 		</component>
 
 		<div class="header-subtitle">
-			{{ appConfig.header.subtitle }}
+			<span class="subtitle-cursor">› </span>{{ appConfig.header.subtitle }}
 		</div>
 	</div>
 </UtilLink>
@@ -57,13 +60,40 @@ const appConfig = useAppConfig()
 	user-select: none;
 }
 
+.avatar-wrapper {
+	position: relative;
+	flex-shrink: 0;
+}
+
+.avatar-glow {
+	position: absolute;
+	inset: -6px;
+	border-radius: inherit;
+	background: linear-gradient(135deg, var(--c-primary), var(--c-accent), var(--c-accent-2));
+	opacity: 0;
+	filter: blur(12px);
+	transition: opacity 0.4s;
+	z-index: -1;
+}
+
+.blog-header:hover .avatar-glow {
+	opacity: 0.6;
+}
+
 .blog-logo {
 	height: 3em;
+	position: relative;
+	z-index: 1;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&.circle {
 		width: 3em;
 		border-radius: 50%;
 		box-shadow: var(--box-shadow-1), var(--box-shadow-3);
+	}
+
+	.blog-header:hover & {
+		transform: scale(1.05);
 	}
 }
 
@@ -77,6 +107,12 @@ const appConfig = useAppConfig()
 	font-size: 1.5em;
 	font-synthesis: none;
 	font-variation-settings: "wght" 600, "BEVL" 100;
+	background: linear-gradient(135deg, var(--c-text), var(--c-primary), var(--c-accent));
+	background-size: 200% 200%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: title-shimmer 4s ease infinite;
 
 	> .split-char {
 		animation: 3.14s infinite alternate vf-weight, 2.72s infinite alternate vf-bevel;
@@ -85,9 +121,25 @@ const appConfig = useAppConfig()
 	}
 }
 
+@keyframes title-shimmer {
+	0%, 100% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+}
+
 .header-subtitle {
-	opacity: 0.5;
+	opacity: 0.55;
 	font-size: 0.8em;
+	font-style: italic;
+
+	.subtitle-cursor {
+		color: var(--c-primary);
+		animation: cursor-blink 1.2s step-end infinite;
+	}
+}
+
+@keyframes cursor-blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
 }
 
 @keyframes vf-weight {
@@ -107,7 +159,7 @@ const appConfig = useAppConfig()
 	align-content: center;
 	justify-items: center;
 	position: absolute;
-	opacity: 0.2;
+	opacity: 0.15;
 	inset: 0;
 	font-size: 4rem;
 	transition: opacity 1s;
@@ -124,7 +176,7 @@ const appConfig = useAppConfig()
 
 .blog-header:hover {
 	.emoji-tail {
-		opacity: 0.5;
+		opacity: 0.35;
 	}
 
 	.split-char {
