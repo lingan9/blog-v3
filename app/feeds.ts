@@ -17,8 +17,8 @@ const feeds: FeedGroup[] = [
         link: 'https://oneloveyushi.top/',
         // ⚠️ 网站上线后取消下面这行注释以启用友链订阅
         // feed: 'https://oneloveyushi.top/atom.xml',
-        icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
-        avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
+        icon: '/assets/avatar-circle.png',
+        avatar: '/assets/avatar-circle.png',
         date: '2026-07-05',
         comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
       },
