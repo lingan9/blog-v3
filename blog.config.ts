@@ -61,8 +61,8 @@ const blogConfig = {
 	],
 
 	twikoo: {
-		envId: '',
-		preload: '',
+		envId: 'https://111-git-main-lingan-blog.vercel.app',
+		preload: 'https://111-git-main-lingan-blog.vercel.app',
 	},
 }
 
