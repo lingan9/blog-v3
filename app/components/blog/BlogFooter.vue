@@ -17,7 +17,7 @@ const appConfig = useAppConfig()
 			</menu>
 		</div>
 	</nav>
-	<p v-html="appConfig.footer.copyright" />
+	<p class="copyright" v-html="appConfig.footer.copyright" />
 </footer>
 </template>
 
@@ -26,26 +26,29 @@ const appConfig = useAppConfig()
 	margin: 3rem 1rem;
 	font-size: 0.9em;
 	color: var(--c-text-2);
-	border-top: 2px solid var(--c-border);
-	padding-top: 2rem;
+	border-top: 1px solid var(--c-border);
+	padding-top: 2.5rem;
 	position: relative;
 
 	&::before {
-		content: "";
+		content: "🌸 ♪ ★ ✿ ♪ ✦";
 		position: absolute;
-		top: -2px;
-		left: 0;
-		width: 30%;
-		height: 2px;
-		background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
-		border-radius: 1px;
+		top: -0.7em;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0 1em;
+		background: var(--c-bg-1);
+		color: var(--c-primary);
+		font-size: 0.85em;
+		letter-spacing: 0.5em;
+		white-space: nowrap;
 	}
 
 	.footer-nav {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 5vw clamp(2rem, 5%, 5vw);
-		padding-block: 3rem;
+		padding-block: 2rem;
 
 		hgroup {
 			margin: 0.5em;
@@ -57,21 +60,23 @@ const appConfig = useAppConfig()
 			align-items: center;
 			gap: 0.3em;
 			width: fit-content;
-			padding: 0.3em 0.5em;
-			border-radius: 0.5em;
+			padding: 0.3em 0.6em;
+			border-radius: 0.6em;
 			font-size: 0.9em;
-			transition: background-color 0.2s, color 0.1s;
+			transition: all 0.2s;
 
 			&:hover {
-				background-color: var(--c-bg-soft);
+				background-color: var(--c-primary-soft);
 				color: var(--c-primary);
 			}
 		}
 	}
 
-	p {
+	.copyright {
 		margin: 0.5em;
-		opacity: 0.6;
+		opacity: 0.55;
+		font-size: 0.85em;
+		text-align: center;
 	}
 }
 </style>

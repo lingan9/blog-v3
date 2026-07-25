@@ -65,15 +65,15 @@ const { copy, copied } = useCopy(shareText)
 
 <style lang="scss" scoped>
 .post-header {
-	contain: paint; // overflow hidden + position relative
+	contain: paint;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 1rem;
 	margin: 0.5rem;
-	border-radius: 1rem;
+	border-radius: 1.2em;
 	border: 1px solid var(--c-border);
-	background: linear-gradient(135deg, var(--c-bg-2), var(--c-bg-3));
+	background: linear-gradient(160deg, var(--c-bg), var(--c-bg-2));
 	color: var(--c-text);
 	position: relative;
 	overflow: hidden;
@@ -83,9 +83,9 @@ const { copy, copied } = useCopy(shareText)
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: 50%;
+		width: 60%;
 		height: 100%;
-		background: radial-gradient(ellipse at top right, var(--c-primary-soft), transparent 70%);
+		background: radial-gradient(ellipse at top right, var(--c-primary-soft), transparent 60%);
 		pointer-events: none;
 		z-index: 0;
 	}
@@ -111,7 +111,7 @@ const { copy, copied } = useCopy(shareText)
 		}
 
 		.post-title {
-			background-image: linear-gradient(transparent, #0003, #0006);
+			background-image: linear-gradient(transparent, #0002, #0005);
 			text-shadow: var(--text-shadow-black);
 
 			&.text-story {
