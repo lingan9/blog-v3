@@ -21,37 +21,9 @@
 	transition: color 0.1s, background-color 0.2s;
 	scroll-behavior: smooth;
 	scroll-padding: 2rem;
-	scrollbar-color: var(--c-primary) hsl(var(--hue-theme) 10% 12%);
+	scrollbar-color: var(--c-border) transparent;
 	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 	-webkit-tap-highlight-color: var(--c-primary-soft);
-
-	/* ===== 背景网格图案 ===== */
-	&::before {
-		content: "";
-		position: fixed;
-		inset: 0;
-		opacity: 0.4;
-		pointer-events: none;
-		z-index: -1;
-		background-image:
-			/* 大网格线 */
-			linear-gradient(var(--c-grid) 1px, transparent 1px),
-			linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
-		background-size: 60px 60px;
-	}
-
-	&::after {
-		content: "";
-		position: fixed;
-		inset: 0;
-		opacity: 0.3;
-		pointer-events: none;
-		z-index: -1;
-		background-image:
-			radial-gradient(circle, var(--c-grid-dot) 1px, transparent 1px);
-		background-size: 30px 30px;
-		background-position: 15px 15px;
-	}
 
 	&:dir(rtl) {
 		--start: right;
@@ -97,7 +69,7 @@ menu, ol, ul {
 }
 
 mark {
-	background: linear-gradient(135deg, var(--c-primary-soft), var(--c-accent-2) 50%);
+	background: var(--c-bg-soft);
 	border-radius: 0.15em;
 	padding: 0.05em 0.2em;
 	color: var(--c-text);
@@ -190,7 +162,7 @@ img {
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
 	border: 1px solid var(--c-border);
-	box-shadow: var(--box-shadow-2), var(--c-glow-primary);
+	box-shadow: var(--box-shadow-2);
 	background-color: var(--ld-bg-card);
 	font-size: 0.8rem;
 	line-height: 1.4;
@@ -207,24 +179,19 @@ img {
 	}
 }
 
-/* ===== 滚动条美化 ===== */
+/* 滚动条 */
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--c-bg-1);
+	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(180deg, var(--c-primary), var(--c-accent));
+	background: var(--c-border);
 	border-radius: 3px;
-	transition: background 0.3s;
-
-	&:hover {
-		background: linear-gradient(180deg, var(--c-accent), var(--c-accent-2));
-	}
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
