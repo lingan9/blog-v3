@@ -1,6 +1,6 @@
 .article {
 	margin: 1rem;
-	line-height: 1.85;
+	line-height: 1.8;
 
 	p {
 		margin: 0.5em 0;
@@ -11,7 +11,7 @@
 	}
 
 	:target {
-		border-radius: 0.3em;
+		border-radius: 0.2rem;
 		animation: highlight 3s;
 
 		@keyframes highlight {
@@ -29,37 +29,28 @@
 		position: relative;
 	}
 
-	/* ===== h2 可爱风格 ===== */
+	/* ===== 标题装饰线 ===== */
 	h2 {
-		padding: 0.3em 0.6em;
-		border-left: 4px solid var(--c-primary);
-		border-radius: 0 0.5em 0.5em 0;
-		background: linear-gradient(90deg, var(--c-primary-soft), transparent 60%);
+		padding-left: 0.6em;
+		border-left: 3px solid var(--c-primary);
 
-		&::after {
-			content: "🌸";
+		&::before {
+			content: "";
 			position: absolute;
-			right: 0.2em;
-			font-size: 0.7em;
-			opacity: 0.4;
-			animation: sakura-float 4s ease-in-out infinite;
+			left: -3px;
+			bottom: -2px;
+			width: 40%;
+			height: 2px;
+			background: linear-gradient(90deg, var(--c-primary), var(--c-accent), transparent);
+			border-radius: 1px;
 		}
 	}
 
 	h3 {
-		padding-left: 0.3em;
-
 		&::before {
-			content: "★ ";
+			content: "▸ ";
 			color: var(--c-primary);
-			font-size: 0.75em;
-		}
-	}
-
-	h4 {
-		&::before {
-			content: "▹ ";
-			color: var(--c-accent);
+			font-size: 0.8em;
 		}
 	}
 
@@ -93,17 +84,28 @@
 		}
 	}
 
-	/* ===== 引用块 ===== */
+	/* ===== 引用块美化 ===== */
 	blockquote {
 		position: relative;
-		padding: 0.6em 1em;
+		padding: 0.5rem 1rem;
 		border-inline-start: 3px solid var(--c-primary);
-		border-radius: 0 0.6em 0.6em 0;
+		border-radius: 0 0.4rem 0.4rem 0;
 		background: linear-gradient(135deg, var(--c-primary-soft), var(--c-bg-2));
 		font-size: 0.9rem;
 
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			opacity: 0;
+			background: linear-gradient(90deg, var(--c-primary), var(--c-accent), var(--c-accent-2));
+			transition: opacity 0.3s;
+			z-index: -1;
+		}
+
 		> .z-codeblock {
-			margin: 0 -1em;
+			margin: 0 -1rem;
 		}
 	}
 
@@ -120,7 +122,7 @@
 		&:not([class]), &.image {
 			display: block;
 			margin: 1rem auto;
-			border-radius: 0.8em;
+			border-radius: 0.5rem;
 			box-shadow: var(--box-shadow-2);
 		}
 	}
@@ -129,13 +131,16 @@
 		margin: 3em 0;
 		border: none;
 		height: 2px;
-		background: linear-gradient(90deg, transparent, var(--c-primary), var(--c-accent-2), transparent);
+		background: linear-gradient(90deg, transparent, var(--c-primary), var(--c-accent), var(--c-accent-2), transparent);
 		border-radius: 1px;
 	}
 
-	/* ===== 粗体 ===== */
+	/* ===== 粗体文字渐变 ===== */
 	strong {
-		color: var(--c-primary);
+		background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 		font-weight: 700;
 	}
 
@@ -143,12 +148,12 @@
 		opacity: 0.5;
 	}
 
-	/* ===== 表格 ===== */
+	/* ===== 表格美化 ===== */
 	:where(table) {
 		width: 100%;
 		border-collapse: collapse;
 		margin: 1em 0;
-		border-radius: 0.8em;
+		border-radius: 0.5em;
 		overflow: hidden;
 		box-shadow: var(--box-shadow-1);
 
@@ -163,6 +168,8 @@
 			font-weight: 600;
 			color: var(--c-text);
 			font-size: 0.85em;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
 		}
 
 		td {
@@ -178,21 +185,6 @@
 		}
 	}
 
-	/* ===== 链接 ===== */
-	a:not([class]) {
-		color: var(--c-primary);
-		text-decoration: underline;
-		text-decoration-color: var(--c-primary-soft);
-		text-underline-offset: 0.2em;
-		text-decoration-thickness: 2px;
-		transition: all 0.2s;
-
-		&:hover {
-			color: var(--c-accent-2);
-			text-decoration-color: var(--c-accent-2);
-		}
-	}
-
 	&.md-tech > h2 > a::before {
 		content: "#";
 		color: white;
@@ -201,9 +193,9 @@
 	&.md-tech > :where(h2, h3, h4, h5, h6) > a::before {
 		content: "";
 		margin-inline-end: 0.5em;
-		padding: 0 3px;
-		border-radius: 0.3em;
-		background: linear-gradient(135deg, var(--c-primary), var(--c-accent-2));
+		padding: 0 2px;
+		border-radius: 0.2rem;
+		background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
 		text-autospace: no-autospace;
 	}
 
@@ -219,9 +211,9 @@
 		> h2::before {
 			content: "";
 			position: absolute;
-			width: 3em;
-			height: 3em;
-			margin: -0.5em 0 0 -0.8em;
+			width: 2.5em;
+			height: 2.5em;
+			margin: -0.4em 0 0 -0.7em;
 			border-radius: 50%;
 			background: linear-gradient(135deg, var(--c-primary-soft), transparent);
 			z-index: -1;
@@ -231,12 +223,9 @@
 			content: "";
 			position: absolute;
 			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 2em;
-			height: 3px;
-			border-radius: 2px;
-			background: var(--c-primary);
+			width: 0.4em;
+			height: 0.7em;
+			background-color: var(--c-primary-soft);
 		}
 
 		> p, :not([class]) > p {
@@ -245,6 +234,20 @@
 			> [class] {
 				text-indent: 0;
 			}
+		}
+	}
+
+	/* ===== 链接美化 ===== */
+	a:not([class]) {
+		color: var(--c-primary);
+		text-decoration: underline;
+		text-decoration-color: var(--c-primary-soft);
+		text-underline-offset: 0.2em;
+		transition: all 0.2s;
+
+		&:hover {
+			color: var(--c-accent);
+			text-decoration-color: var(--c-accent);
 		}
 	}
 }

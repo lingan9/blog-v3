@@ -5,10 +5,10 @@
 	--transform-end-far: translateX(100%);
 	--delay: 0.2s;
 	--z-index-popover: 100;
-	--text-shadow-black: 0 0.03em 0.08em #0001;
+	--text-shadow-black: 0 0.05em 0.1em #0002, 0 0.05em 0.15em #0002;
 	--box-shadow-1: 0 0.1em 0.3em var(--ld-shadow);
-	--box-shadow-2: 0 0.2em 0.5em var(--ld-shadow);
-	--box-shadow-3: 0 0.4em 1em var(--ld-shadow);
+	--box-shadow-2: 0 0.2em 0.6em var(--ld-shadow);
+	--box-shadow-3: 0 0.5em 1.2em var(--ld-shadow);
 
 	overflow-wrap: break-word;
 	font-family: sans-serif;
@@ -18,15 +18,29 @@
 	text-autospace: normal;
 	text-size-adjust: none;
 	color: var(--c-text-1);
-	transition: color 0.2s, background-color 0.3s;
+	transition: color 0.1s, background-color 0.2s;
 	scroll-behavior: smooth;
 	scroll-padding: 2rem;
-	scrollbar-color: var(--c-primary) transparent;
+	scrollbar-color: var(--c-primary) hsl(var(--hue-theme) 10% 12%);
 	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 	-webkit-tap-highlight-color: var(--c-primary-soft);
 
-	/* ===== 柔和圆点背景 ===== */
+	/* ===== 背景网格图案 ===== */
 	&::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		opacity: 0.4;
+		pointer-events: none;
+		z-index: -1;
+		background-image:
+			/* 大网格线 */
+			linear-gradient(var(--c-grid) 1px, transparent 1px),
+			linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+		background-size: 60px 60px;
+	}
+
+	&::after {
 		content: "";
 		position: fixed;
 		inset: 0;
@@ -34,11 +48,9 @@
 		pointer-events: none;
 		z-index: -1;
 		background-image:
-			radial-gradient(circle at 15% 20%, var(--c-primary-soft) 0px, transparent 200px),
-			radial-gradient(circle at 85% 60%, hsl(195deg 60% 55% / 6%) 0px, transparent 250px),
-			radial-gradient(circle at 50% 90%, hsl(300deg 45% 60% / 5%) 0px, transparent 200px),
-			radial-gradient(circle at 30% 70%, var(--c-primary-soft) 0px, transparent 180px),
-			radial-gradient(circle at 75% 15%, hsl(200deg 40% 60% / 4%) 0px, transparent 220px);
+			radial-gradient(circle, var(--c-grid-dot) 1px, transparent 1px);
+		background-size: 30px 30px;
+		background-position: 15px 15px;
 	}
 
 	&:dir(rtl) {
@@ -86,8 +98,8 @@ menu, ol, ul {
 
 mark {
 	background: linear-gradient(135deg, var(--c-primary-soft), var(--c-accent-2) 50%);
-	border-radius: 0.2em;
-	padding: 0.05em 0.3em;
+	border-radius: 0.15em;
+	padding: 0.05em 0.2em;
 	color: var(--c-text);
 }
 
@@ -109,6 +121,7 @@ button, input, textarea {
 	color: currentcolor;
 }
 
+// Iconify 图标复用了此类
 :where(.iconify) {
 	display: inline-block;
 	flex-shrink: 0;
@@ -124,10 +137,12 @@ button, input, textarea {
 	filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .i-simple-icons\:mdnwebdocs {
 	transform: scale(0.8);
 }
 
+// 图片加载失败 fallback
 img {
 	contain: paint;
 	display: inline-block;
@@ -173,9 +188,9 @@ img {
 
 .tippy-box {
 	padding: 0.3em 0.6em;
-	border-radius: 0.8em;
+	border-radius: 0.5em;
 	border: 1px solid var(--c-border);
-	box-shadow: var(--box-shadow-2);
+	box-shadow: var(--box-shadow-2), var(--c-glow-primary);
 	background-color: var(--ld-bg-card);
 	font-size: 0.8rem;
 	line-height: 1.4;
@@ -192,7 +207,7 @@ img {
 	}
 }
 
-/* ===== 圆润滚动条 ===== */
+/* ===== 滚动条美化 ===== */
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
@@ -200,27 +215,27 @@ img {
 
 ::-webkit-scrollbar-track {
 	background: var(--c-bg-1);
-	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--c-primary);
+	background: linear-gradient(180deg, var(--c-primary), var(--c-accent));
 	border-radius: 3px;
-	opacity: 0.6;
+	transition: background 0.3s;
 
 	&:hover {
-		background: var(--c-accent-2);
+		background: linear-gradient(180deg, var(--c-accent), var(--c-accent-2));
 	}
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .shiki > .line {
 	> span {
 		font-style: var(--shiki-light-font-style);
 
 		.dark & {
-			background-color: var(--shiki-dark-bg) !important;
+			background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
 			font-style: var(--shiki-dark-font-style);
-			color: var(--shiki-dark) !important;
+			color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
 		}
 	}
 

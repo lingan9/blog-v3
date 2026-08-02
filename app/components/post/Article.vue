@@ -10,8 +10,8 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">
-			<span class="title-icon">✦</span>
-			{{ title }}
+			<span class="title-text">{{ title }}</span>
+			<span class="title-line" />
 		</h2>
 
 		<p v-if="description" class="article-description">
@@ -51,11 +51,31 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	container-type: inline-size;
 	position: relative;
 	margin: 1em 0;
-	border-radius: 1em;
+	border-radius: 0.8em;
 	border: 1px solid var(--c-border);
 	color: var(--c-text);
-	animation: float-in 0.35s var(--delay) backwards;
+	animation: float-in 0.3s var(--delay) backwards;
 	overflow: hidden;
+
+	/* 左侧装饰条 */
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 10%;
+		height: 80%;
+		width: 3px;
+		background: linear-gradient(180deg, var(--c-primary), var(--c-accent), var(--c-accent-2));
+		border-radius: 0 2px 2px 0;
+		opacity: 0;
+		transform: scaleY(0);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	&:hover::before {
+		opacity: 1;
+		transform: scaleY(1);
+	}
 
 	> article {
 		display: grid;
@@ -88,17 +108,20 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	font-size: 1.2em;
 	color: var(--c-text);
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	gap: 0.3em;
 
-	.title-icon {
-		color: var(--c-primary);
-		font-size: 0.7em;
-		transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+	.title-line {
+		display: block;
+		width: 0;
+		height: 2px;
+		background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+		border-radius: 1px;
+		transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.article-card:hover & .title-icon {
-		transform: rotate(180deg) scale(1.3);
+	.article-card:hover & .title-line {
+		width: 3em;
 	}
 }
 
@@ -110,19 +133,20 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 
 .article-cover {
 	position: absolute;
-	opacity: 0.45;
+	opacity: 0.5;
 	inset-inline-end: 0;
 	top: 0;
 	width: calc(40% + 2em);
 	height: 100%;
 	margin: 0;
-	mask-image: linear-gradient(to var(--end), transparent, #FFF 60%);
+	mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
 	transition: opacity 0.3s;
 	object-fit: cover;
-	border-radius: 0 1em 1em 0;
+	filter: brightness(0.9);
 
 	:hover > & {
-		opacity: 0.7;
+		opacity: 0.8;
+		filter: brightness(1);
 	}
 
 	& + article {
@@ -139,7 +163,6 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 		aspect-ratio: 2.4;
 		margin-bottom: -10%;
 		mask-image: linear-gradient(#FFF 50%, transparent);
-		border-radius: 1em 1em 0 0;
 
 		& + article {
 			width: auto;
