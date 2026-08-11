@@ -1,147 +1,123 @@
-import type { Nav } from './types/nav'
-
-const nav: Nav = [
-  {
-    title: '菜单',
-    items: [
-      { icon: 'tabler:home', text: '首页', url: '/' },
-      { icon: 'tabler:archive', text: '归档', url: '/archive' },
-      { icon: 'tabler:link', text: '友链', url: '/link' },
-    ],
-  },
-  {
-    title: '更多',
-    items: [
-      { icon: 'tabler:palette', text: '主题', url: '/theme' },
-      { icon: 'tabler:rss', text: 'RSS', url: '/atom.xml' },
-      { icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9/blog-v3' },
-    ],
-  },
-]
-
-const footerNav: Nav = [
-  {
-    title: '链接',
-    items: [
-      { icon: 'tabler:home', text: '首页', url: '/' },
-      { icon: 'tabler:archive', text: '归档', url: '/archive' },
-      { icon: 'tabler:link', text: '友链', url: '/link' },
-    ],
-  },
-  {
-    title: '关于',
-    items: [
-      { icon: 'tabler:palette', text: '主题', url: '/theme' },
-      { icon: 'tabler:rss', text: 'RSS', url: '/atom.xml' },
-      { icon: 'tabler:brand-github', text: '源码', url: 'https://github.com/lingan9/blog-v3' },
-    ],
-  },
-]
+import blogConfig from '~~/blog.config'
 
 export default defineAppConfig({
-  // 基本信息
-  title: '凌安的小窝',
-  description: '凌安的个人博客，分享技术深度思考与安全学习历程。目前正在从零入门 CTF-Web 方向，记录漏洞复现、网安刷题笔记与日常开发实践。寻找志同道合的技术伙伴，有无大手子带带我喵！欢迎一起交流碰撞，探索赛博荒野中的内在秩序。',
-  language: 'zh-CN',
-  url: 'https://oneloveyushi.top/',
-  timeEstablished: '2026-07-05',
+  // ========== 基础信息 ==========
+  title: blogConfig.title,
+  description: blogConfig.description,
+  url: blogConfig.url,
+  language: blogConfig.language,
+  timeEstablished: blogConfig.timeEstablished,
 
   author: {
-    name: '凌安',
-    avatar: '/avatar.png',
-    email: '1905003027@qq.com',
-    homepage: 'https://oneloveyushi.top/',
+    name: blogConfig.author.name,
+    avatar: blogConfig.author.avatar,
+    email: blogConfig.author.email,
+    homepage: blogConfig.author.homepage,
   },
 
   copyright: {
-    abbr: 'CC BY-NC-SA 4.0',
-    name: '署名-非商业性使用-相同方式共享 4.0 国际',
-    url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
+    abbr: blogConfig.copyright.abbr,
+    name: blogConfig.copyright.name,
+    url: blogConfig.copyright.url,
   },
 
-  // 头部配置
+  // ========== 头部配置 ==========
   header: {
-    logo: '/avatar.png',
+    logo: blogConfig.author.avatar,
     showTitle: true,
-    subtitle: '蓦然回首，那人却在，灯火阑珊处',
-    emojiTail: ['🐱', '💻', '🔒', '🛡️', '⚔️'],
+    subtitle: blogConfig.subtitle || blogConfig.description,
+    emojiTail: [] as string[],
   },
 
-  // 侧栏导航
-  nav,
-
-  // 页脚
-  footer: {
-    nav: footerNav,
-    copyright: '&copy; 2026 <a href="https://oneloveyushi.top/">凌安</a> | 主题 <a href="https://github.com/L33Z22L11/blog-v3">Clarity</a> | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>',
-    iconNav: [
-      { icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9/blog-v3' },
-      { icon: 'tabler:rss', text: 'RSS', url: '/atom.xml' },
-    ],
-  },
-
-  // 主题切换
-  themes: {
-    system: { icon: 'tabler:device-desktop', tip: '跟随系统' },
-    light: { icon: 'tabler:sun', tip: '浅色模式' },
-    dark: { icon: 'tabler:moon', tip: '深色模式' },
-  },
-
-  // 组件配置
-  component: {
-    alert: {
-      defaultStyle: 'card' as 'flat' | 'card',
+  // ========== 侧边栏导航 ==========
+  nav: [
+    {
+      title: '',
+      items: [
+        { icon: 'tabler:home', text: '首页', url: '/' },
+        { icon: 'tabler:archive', text: '归档', url: '/archive' },
+        { icon: 'tabler:link', text: '友链', url: '/link' },
+        { icon: 'tabler:palette', text: '主题', url: '/theme' },
+      ],
     },
-    codeblock: {
-      indent: 2,
-      triggerRows: 15,
-      collapsedRows: 10,
-      tabSize: 4,
-      enableIndentGuide: true,
+  ],
+
+  // ========== 页脚配置 ==========
+  footer: {
+    nav: [
+      {
+        title: '导航',
+        items: [
+          { icon: 'tabler:home', text: '首页', url: '/' },
+          { icon: 'tabler:archive', text: '归档', url: '/archive' },
+          { icon: 'tabler:link', text: '友链', url: '/link' },
+          { icon: 'tabler:palette', text: '主题', url: '/theme' },
+        ],
+      },
+      {
+        title: '更多',
+        items: [
+          { icon: 'tabler:brand-github', text: 'GitHub', url: 'https://github.com/lingan9/blog-v3', external: true },
+          { icon: 'tabler:rss', text: 'Atom 订阅', url: '/atom.xml', external: true },
+        ],
+      },
+    ],
+    iconNav: [] as { icon: string, text: string, url: string }[],
+    copyright: `&copy; ${new Date().getFullYear()} ${blogConfig.author.name} | Powered by <a href="https://github.com/lingan9/blog-v3" target="_blank">Clarity</a>`,
+  },
+
+  // ========== 文章配置 ==========
+  article: {
+    categories: blogConfig.article.categories,
+    order: blogConfig.article.order,
+  },
+
+  // ========== 分页配置 ==========
+  pagination: {
+    perPage: 10,
+    sortOrder: 'date' as string,
+    allowAscending: true,
+  },
+
+  // ========== 组件配置 ==========
+  component: {
+    stats: {
+      birthYear: new Date(blogConfig.timeEstablished).getFullYear(),
+    },
+    alert: {
+      defaultStyle: 'flat' as string,
     },
     excerpt: {
       animation: true,
       caret: '_',
     },
+    codeblock: {
+      indent: 2,
+      triggerRows: 20,
+      collapsedRows: 10,
+      tabSize: 4,
+      enableIndentGuide: true,
+    },
     slide: {
       showTitle: true,
     },
-    stats: {
-      birthYear: 2005,
-    },
   },
 
-  // 友链配置
+  // ========== 主题配置 ==========
+  themes: {
+    system: { icon: 'tabler:device-desktop', tip: '跟随系统' },
+    light: { icon: 'tabler:sun', tip: '浅色模式' },
+    dark: { icon: 'tabler:moon', tip: '深色模式' },
+  } as Record<string, { icon: string, tip: string }>,
+
+  // ========== 友链配置 ==========
   link: {
-    remindNoFeed: true,
     randomInGroup: false,
+    remindNoFeed: true,
   },
 
-  // 分页
-  pagination: {
-    sortOrder: 'date' as 'date' | 'updated',
-    perPage: 10,
-    allowAscending: true,
-  },
-
-  // 文章配置
-  article: {
-    categories: {
-      '未分类': { icon: 'tabler:circle-dashed' },
-      '技术': { icon: 'tabler:mouse', color: '#33aaff' },
-      '开发': { icon: 'tabler:code', color: '#7777ff' },
-      '安全': { icon: 'tabler:bug', color: '#ff7733' },
-      '杂谈': { icon: 'tabler:message', color: '#33bbaa' },
-      '生活': { icon: 'tabler:leaf', color: '#ff7777' },
-    },
-    order: {
-      date: '创建日期',
-      updated: '更新日期',
-    },
-  },
-
-  // 评论
+  // ========== 评论配置 ==========
   twikoo: {
-    envId: '',
+    envId: blogConfig.twikoo?.envId || '',
   },
 })

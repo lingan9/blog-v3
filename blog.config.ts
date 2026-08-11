@@ -6,7 +6,7 @@ const basicConfig = {
 	description: '凌安的个人博客，分享技术深度思考与安全学习历程。目前正在从零入门 CTF-Web 方向，记录漏洞复现、网安刷题笔记与日常开发实践。寻找志同道合的技术伙伴，有无大手子带带我喵！欢迎一起交流碰撞，探索赛博荒野中的内在秩序。',
 	author: {
 		name: '凌安',
-		avatar: '/avatar.png', // 💡 已修改：指向本地 public 目录下的新圆形头像
+		avatar: '/assets/avatar-circle.png',
 		email: '1905003027@qq.com',
 		homepage: 'https://oneloveyushi.top/', 
 	},
@@ -16,7 +16,7 @@ const basicConfig = {
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
 	// 💡 已修改：浏览器标签页小图标同步更新为新的圆形头像
-	favicon: '/avatar.png',
+	favicon: '/assets/avatar-circle.png',
 	language: 'zh-CN',
 	timeEstablished: '2026-07-05',
 	timeZone: 'Asia/Shanghai',
@@ -55,13 +55,14 @@ const blogConfig = {
 	},
 
 	scripts: [
-		// 仅保留你自己的 Cloudflare 统计，原作者的纸网依赖脚本已在这里被安全拔除
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+		// Twikoo 评论系统
+		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true },
 	],
 
 	twikoo: {
-		envId: '',
-		preload: '',
+		envId: 'https://111-git-main-lingan-blog.vercel.app',
+		preload: 'https://111-git-main-lingan-blog.vercel.app',
 	},
 }
 

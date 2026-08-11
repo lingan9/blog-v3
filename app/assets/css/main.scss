@@ -5,13 +5,12 @@
 	--transform-end-far: translateX(100%);
 	--delay: 0.2s;
 	--z-index-popover: 100;
-	--text-shadow-black: 0 0.1em 0.1em #0003, 0 0.1em 0.2em #0003;
-	--box-shadow-1: 0 0.1em 0.2em var(--ld-shadow);
-	--box-shadow-2: 0 0.2em 0.5em var(--ld-shadow);
-	--box-shadow-3: 0 0.5em 1em var(--ld-shadow);
+	--text-shadow-black: 0 0.05em 0.1em #0002, 0 0.05em 0.15em #0002;
+	--box-shadow-1: 0 0.1em 0.3em var(--ld-shadow);
+	--box-shadow-2: 0 0.2em 0.6em var(--ld-shadow);
+	--box-shadow-3: 0 0.5em 1.2em var(--ld-shadow);
 
 	overflow-wrap: break-word;
-	background-color: var(--c-bg-1);
 	font-family: sans-serif;
 	font-family: var(--font-basic);
 	font-synthesis: style;
@@ -22,7 +21,7 @@
 	transition: color 0.1s, background-color 0.2s;
 	scroll-behavior: smooth;
 	scroll-padding: 2rem;
-	scrollbar-color: var(--c-text-3) transparent;
+	scrollbar-color: var(--c-border) transparent;
 	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 	-webkit-tap-highlight-color: var(--c-primary-soft);
 
@@ -50,7 +49,9 @@
 }
 
 ::selection {
-	background-color: var(--c-primary-soft);
+	background-color: var(--c-primary);
+	color: #fff;
+	text-shadow: none;
 }
 
 a {
@@ -68,8 +69,10 @@ menu, ol, ul {
 }
 
 mark {
-	background-color: var(--c-primary-soft);
-	color: var(--c-primary);
+	background: var(--c-bg-soft);
+	border-radius: 0.15em;
+	padding: 0.05em 0.2em;
+	color: var(--c-text);
 }
 
 button {
@@ -118,7 +121,7 @@ img {
 
 	&::before {
 		all: initial;
-		content: attr(alt); // Firefox 的 ::before content 仅在 alt 不为空时展示且值为 attr(alt) 无法修改
+		content: attr(alt);
 		display: grid;
 		place-content: center;
 		position: absolute;
@@ -158,7 +161,8 @@ img {
 .tippy-box {
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
-	box-shadow: var(--box-shadow-3);
+	border: 1px solid var(--c-border);
+	box-shadow: var(--box-shadow-2);
 	background-color: var(--ld-bg-card);
 	font-size: 0.8rem;
 	line-height: 1.4;
@@ -175,6 +179,22 @@ img {
 	}
 }
 
+/* 滚动条 */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--c-border);
+	border-radius: 3px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
 .shiki > .line {
 	> span {
 		font-style: var(--shiki-light-font-style);

@@ -1,9 +1,9 @@
 import type { FeedGroup } from './types/feed'
 
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
-
-export default [
+// 📋 友链数据列表
+// 每个 group 代表一组友链，包含组名、描述和该组内的友链条目
+// 要添加新友链，复制一个 {...} 条目到对应组的 entries 数组即可
+const feeds: FeedGroup[] = [
   // 🏠 本尊专区：你的个人博客展示
   {
     name: '我的博客',
@@ -15,11 +15,10 @@ export default [
         title: '凌安的小窝',
         desc: '正在入门ctf-web 大手子ddw',
         link: 'https://oneloveyushi.top/',
-        // ⚠️ 临时注释掉 feed！因为你的网站还没上线，打包工具请求不到这个 xml 就会报错中断。
-        // 等这次部署成功，网站活过来了，下次再把这行取消注释！
+        // ⚠️ 网站上线后取消下面这行注释以启用友链订阅
         // feed: 'https://oneloveyushi.top/atom.xml',
-        icon: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
-        avatar: 'https://img2024.cnblogs.com/blog/3823631/202607/3823631-20260705132302916-2066211351.jpg',
+        icon: '/assets/avatar-circle.png',
+        avatar: '/assets/avatar-circle.png',
         date: '2026-07-05',
         comment: '凌安的个人博客，目前正在入门 ctf-web 方向。',
       },
@@ -54,4 +53,6 @@ export default [
       /* 🌟 以后有了新朋友，直接模仿上面的格式把大括号 {...} 复制到这里来就行啦 */
     ],
   },
-] satisfies FeedGroup[]
+]
+
+export default feeds
