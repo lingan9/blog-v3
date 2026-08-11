@@ -1,5 +1,10 @@
 
-
+---
+title: "ctf入门之北"
+date: 2026-07-14
+description: "这是我的第一篇文章-ctf入门之北"
+image: "https://img2024.cnblogs.com/blog/3823631/202608/3823631-20260812010535873-1621546986.jpg"
+---
 **关于网络安全这一块，其实我也了解的不多，以下是我对于网络安全这一块的理解，本人水平有限，如有错误，还需多多指教**。
 
 CTF 顾名思义就是 capture the flag 分为解题模式和攻防模式，选手需要在指定的时间内找到flag
@@ -22,10 +27,10 @@ CTF也有许多方向：
 
 那么如何学习ctf呢 
 
-[Web 安全入门指北]: https://hdu-cs.wiki/5.%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9D%97/5.3%20CTF%E5%85%A5%E9%97%A8%E6%96%87%E6%A1%A3/5.3.1%20Web%E5%AE%89%E5%85%A8%E5%85%A5%E9%97%A8.html
-[探姬师傅的ctf教程]: https://hello-ctf.com/
-[web安全学习笔记]: https://websec.readthedocs.io/zh/latest/
-[cs自学指南]: https://csdiy.wiki/
+[Web 安全入门指北]: https://hdu-cs.wiki/5.%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9D%97/5.3%20CTF%E5%85%A5%E9%97%A8%E6%96%87%E6%A1%A3/5.3.1%20Web%E5%AE%89%E5%85%A8%E5%85%A5%E9%97%A8.html	"Web 安全入门指北"
+[探姬师傅的ctf教程]: https://hello-ctf.com/	"探姬师傅的ctf教程"
+[web安全学习笔记]: https://websec.readthedocs.io/zh/latest/	"web安全学习笔记"
+[cs自学指南]: https://csdiy.wiki/	"cs自学指南"
 
 `还有很多就不一一列举了` .............~~什么时候我能写一个这样的就好了~~
 
@@ -47,10 +52,13 @@ CTF也有许多方向：
 
 有了理论还不行 还得实践出真知：
 
-[nssctf]: https://www.nssctf.cn
-[buuctf]: https://ctf2.dasctf.com/
-[青岑ctf]: https://ctf.qingcen.net
-[ctfplus]: *https://www.ctfplus.cn
+[nssctf]: https://www.nssctf.cn	
+
+[buuctf]: https://ctf2.dasctf.com/	
+
+[青岑ctf]: https://ctf.qingcen.net	
+
+[ctfplus]: *https://www.ctfplus.cn	
 
 
 
