@@ -17,7 +17,7 @@ const { copy, copied } = useCopy(shareText)
 
 <template>
 <div class="post-header" :class="{ 'has-cover': image }">
-	<Pic v-if="image" class="post-cover" :src="image" :alt="title" :filter="coverFilter" />
+	<img v-if="image" class="post-cover" :src="image" :alt="title" :style="{ filter: coverFilter ?? undefined }" />
 	<div class="post-nav">
 		<div class="operations">
 			<Icon v-show="false" name="tabler:check" />
@@ -133,12 +133,9 @@ const { copy, copied } = useCopy(shareText)
 .post-cover {
 	position: absolute;
 	inset: 0;
-
-	> :deep(img) {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .post-title {
